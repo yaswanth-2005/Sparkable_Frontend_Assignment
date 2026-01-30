@@ -109,7 +109,7 @@ export function Navigation() {
           >
             Sign in
           </a>
-          <Button className="bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold text-[15px] px-6 py-5 rounded-full shadow-lg shadow-green-500/20 flex items-center gap-2 group transition-all">
+          <Button className="bg-primary hover:bg-primary/90 text-white font-semibold text-[15px] px-6 py-5 rounded-full shadow-lg shadow-primary/20 flex items-center gap-2 group transition-all">
             See a demo
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </Button>
@@ -164,7 +164,7 @@ export function Navigation() {
               >
                 Sign in
               </a>
-              <Button className="w-full mt-2 bg-[#22C55E] hover:bg-[#16A34A] text-white font-semibold py-6 rounded-xl flex items-center justify-center gap-2">
+              <Button className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-semibold py-6 rounded-xl flex items-center justify-center gap-2">
                 See a demo
                 <ArrowRight className="w-4 h-4" />
               </Button>

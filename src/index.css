@@ -10,8 +10,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 150 15% 10%;
     --popover-foreground: 0 0% 98%;
-    --primary: 45 90% 55%;
-    --primary-foreground: 150 20% 8%;
+    --primary: 142 76% 45%; /* Solidroad Bright Green */
+    --primary-foreground: 0 0% 100%;
     --secondary: 160 40% 20%;
     --secondary-foreground: 0 0% 98%;
     --muted: 160 20% 18%;
@@ -22,16 +22,16 @@
     --destructive-foreground: 0 0% 98%;
     --border: 160 15% 20%;
     --input: 160 15% 20%;
-    --ring: 45 90% 55%;
+    --ring: 142 76% 45%;
     --radius: 0.625rem;
-    
+
     /* Custom colors */
     --forest: 150 40% 15%;
     --forest-light: 150 30% 22%;
     --teal: 170 60% 35%;
     --teal-light: 170 50% 45%;
-    --golden: 45 90% 55%;
-    --golden-light: 45 80% 65%;
+    --golden: 142 76% 45%; /* Redirect golden to green for consistency if used as accent */
+    --golden-light: 142 66% 55%;
     --cream: 45 30% 92%;
     --mint: 150 40% 85%;
   }
@@ -46,7 +46,9 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
@@ -54,11 +56,11 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .gradient-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--golden))] to-[hsl(var(--teal-light))];
   }
-  
+
   .glass-effect {
     @apply backdrop-blur-xl bg-white/5 border border-white/10;
   }
@@ -66,33 +68,61 @@
 
 /* Custom animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(var(--golden) / 0.3); }
-  50% { box-shadow: 0 0 40px hsl(var(--golden) / 0.5); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--golden) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--golden) / 0.5);
+  }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scroll-text {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .animate-float {
@@ -120,11 +150,21 @@
 }
 
 /* Stagger delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+.stagger-5 {
+  animation-delay: 0.5s;
+}
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
