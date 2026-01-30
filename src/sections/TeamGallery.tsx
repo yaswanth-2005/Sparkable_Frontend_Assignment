@@ -1,105 +1,107 @@
-import { useEffect, useRef, useState } from 'react'
-import { Award, Shield, Zap, Users } from 'lucide-react'
-
-const teamImages = [
-  { src: '/team-1.jpg', alt: 'Team collaboration', size: 'large' },
-  { src: '/team-2.jpg', alt: 'Customer support agent', size: 'tall' },
-  { src: '/team-3.jpg', alt: 'Team member', size: 'square' },
-  { src: '/team-4.jpg', alt: 'Team member', size: 'tall' },
-]
-
-const badges = [
-  { icon: Award, label: 'Built by CX experts', description: 'Our team brings deep experience from category-leading CX companies.' },
-  { icon: Shield, label: 'Enterprise-ready', description: 'SOC 2 and ISO 27001 certified with strict security protocols.' },
-  { icon: Zap, label: 'Fast & reliable', description: 'Built for speed, clarity, and operational excellence.' },
-  { icon: Users, label: 'Made for your stack', description: 'Integrates seamlessly with your existing CX tech stack.' },
-]
+import { Check } from "lucide-react";
 
 export function TeamGallery() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section
-      ref={sectionRef}
-      id="customers"
-      className="relative py-24 lg:py-32 bg-forest-dark overflow-hidden"
-    >
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-teal/5 rounded-full blur-3xl" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Built by CX experts
-          </h2>
-          <p className="max-w-2xl mx-auto text-lg text-white/60">
-            Our team brings deep experience from category-leading CX companies. 
-            That expertise is translated into a platform built for speed, clarity, and operational excellence.
-          </p>
-        </div>
-
-        {/* Image Gallery */}
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {teamImages.map((image) => (
-            <div
-              key={image.src}
-              className={`relative overflow-hidden rounded-2xl group ${
-                image.size === 'large' ? 'col-span-2 row-span-2' : 
-                image.size === 'tall' ? 'row-span-2' : ''
-              }`}
-            >
-              <div className={`${
-                image.size === 'large' ? 'aspect-square' : 
-                image.size === 'tall' ? 'aspect-[3/4]' : 'aspect-square'
-              }`}>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+    <section className="py-24 lg:py-32 bg-[#fafafa]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Built by CX experts */}
+          <div className="bg-white rounded-[2rem] p-8 md:p-12 flex flex-col justify-between min-h-[400px] border border-gray-100 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+            <div className="flex justify-end mb-8">
+              {/* Abstract 3D Speech Bubble representation */}
+              <div className="relative w-32 h-32">
+                <div className="absolute inset-0 bg-green-400 rounded-2xl transform -rotate-12 translate-y-2 opacity-20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-300 to-green-500 rounded-2xl transform -rotate-6 shadow-lg flex items-center justify-center">
+                  <div className="w-20 h-2 bg-white/30 rounded-full" />
+                </div>
               </div>
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-          ))}
-        </div>
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                Built by CX experts
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Our team brings deep experience from category-leading CX
+                companies. That expertise is translated into a platform built
+                for speed, clarity, and operational excellence.
+              </p>
+            </div>
+          </div>
 
-        {/* Badges */}
-        <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {badges.map((badge) => (
-            <div
-              key={badge.label}
-              className="group p-6 rounded-xl bg-forest-light/50 border border-white/5 hover:border-white/10 transition-all hover:-translate-y-1"
-            >
-              <div className="w-10 h-10 rounded-lg bg-teal/20 flex items-center justify-center mb-4 group-hover:bg-teal/30 transition-colors">
-                <badge.icon className="w-5 h-5 text-teal" />
+          {/* Card 2: Nature Image */}
+          <div className="rounded-[2rem] overflow-hidden min-h-[400px] shadow-sm group relative">
+            <img
+              src="/image.png"
+              alt="Nature landscape"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+
+          {/* Card 3: Engineered for enterprises */}
+          <div className="bg-[#fffbeb] rounded-[2rem] p-8 md:p-12 flex flex-col justify-between min-h-[400px] border border-yellow-100 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+            <div className="flex justify-start mb-8 pl-8 pt-8">
+              {/* Abstract 3D Safe/Lock representation */}
+              <div className="relative w-32 h-32">
+                <div className="absolute inset-0 bg-green-600/10 rounded-xl transform rotate-6 scale-90" />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-400 to-green-600 rounded-xl shadow-xl flex items-center justify-center border-b-8 border-green-700">
+                  <div className="w-16 h-16 rounded-full border-4 border-white/30 flex items-center justify-center">
+                    <div className="w-4 h-8 bg-white/30 rounded-full" />
+                  </div>
+                </div>
               </div>
-              <h3 className="font-semibold text-white mb-2">{badge.label}</h3>
-              <p className="text-sm text-white/50">{badge.description}</p>
             </div>
-          ))}
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                Engineered for enterprises
+              </h3>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Enterprise-ready by design, Solidroad is SOC 2 and ISO 27001
+                certified and adheres to strict security protocols to safeguard
+                your data.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4: Made for your CX stack */}
+          <div className="bg-white rounded-[2rem] p-8 md:p-12 flex flex-col justify-between min-h-[400px] border border-gray-100 shadow-sm transition-transform hover:-translate-y-1 duration-300">
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                Made for your <br /> CX stack
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Solidroad integrates with your CX tech stack, connecting quality
+                improvements across your entire agent ecosystem.
+              </p>
+            </div>
+
+            {/* Integration Badges Marquee-ish */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                "Zendesk",
+                "Intercom",
+                "Gladly",
+                "Gong",
+                "Notion",
+                "HelpScout",
+                "Gorgias",
+                "Aircall",
+              ].map((tool) => (
+                <div
+                  key={tool}
+                  className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-full border border-gray-100"
+                >
+                  <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">
+                    {tool}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
