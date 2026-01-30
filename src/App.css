@@ -1,0 +1,35 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "customFont";
+  src: url("/fonts/custom-font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "customFont", sans-serif;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: hsl(45 90% 55% / 0.3);
+  color: white;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid hsl(45 90% 55%);
+  outline-offset: 2px;
+}
+
+/* Image loading placeholder */
+img {
+  background-color: hsl(150 40% 15%);
+}
