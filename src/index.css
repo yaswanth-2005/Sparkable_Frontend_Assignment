@@ -34,6 +34,11 @@
     --golden-light: 142 66% 55%;
     --cream: 45 30% 92%;
     --mint: 150 40% 85%;
+
+    /* Pastel Palette for Features */
+    --pastel-yellow: 45 100% 93%;
+    --pastel-blue: 190 60% 92%;
+    --pastel-green: 140 60% 92%;
   }
 }
 
@@ -164,23 +169,4 @@
 }
 .stagger-5 {
   animation-delay: 0.5s;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--forest));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--teal));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--teal-light));
 }

@@ -1,36 +1,30 @@
 const logos = [
-  { name: 'FAIRE', style: 'tracking-[0.3em] font-light' },
-  { name: 'ActiveCampaign', style: 'font-semibold', suffix: '>' },
-  { name: 'WorkWhile', style: 'font-medium', prefix: 'W' },
-  { name: 'INTERCOM', style: 'font-bold tracking-wider' },
-  { name: 'crypto.com', style: 'font-semibold' },
-  { name: 'Podium', style: 'font-bold' },
-  { name: 'FINOM', style: 'font-bold tracking-wider' },
-  { name: 'RYANAIR', style: 'font-bold' },
-  { name: 'amenitiz', style: 'font-light tracking-wide' },
-]
+  { name: "FAIRE", style: "tracking-[0.3em] font-light" },
+  { name: "ActiveCampaign", style: "font-semibold", suffix: ">" },
+  { name: "WorkWhile", style: "font-medium", prefix: "W" },
+  { name: "INTERCOM", style: "font-bold tracking-wider" },
+  { name: "crypto.com", style: "font-semibold" },
+  { name: "Podium", style: "font-bold" },
+  { name: "FINOM", style: "font-bold tracking-wider" },
+  { name: "RYANAIR", style: "font-bold" },
+  { name: "amenitiz", style: "font-light tracking-wide" },
+];
 
-function LogoItem({ logo }: { logo: typeof logos[0] }) {
+function LogoItem({ logo }: { logo: (typeof logos)[0] }) {
   return (
     <div className="flex items-center gap-2 px-8 text-white/40 hover:text-white/60 transition-colors whitespace-nowrap">
       {logo.prefix && (
         <span className={`text-xl ${logo.style}`}>{logo.prefix}</span>
       )}
       <span className={`text-lg ${logo.style}`}>{logo.name}</span>
-      {logo.suffix && (
-        <span className="text-lg">{logo.suffix}</span>
-      )}
+      {logo.suffix && <span className="text-lg">{logo.suffix}</span>}
     </div>
-  )
+  );
 }
 
 export function LogoTicker() {
   return (
-    <section className="relative py-12 bg-forest-dark border-y border-white/5 overflow-hidden">
-      {/* Gradient masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-forest-dark to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-forest-dark to-transparent z-10" />
-
+    <section className="relative py-12 border-y border-white/5 overflow-hidden">
       {/* Scrolling container */}
       <div className="flex animate-marquee">
         {/* First set */}
@@ -47,5 +41,5 @@ export function LogoTicker() {
         </div>
       </div>
     </section>
-  )
+  );
 }

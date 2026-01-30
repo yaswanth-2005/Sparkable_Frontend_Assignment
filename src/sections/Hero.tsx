@@ -22,7 +22,7 @@ export function Hero() {
           className="w-full h-full object-cover"
         />
         {/* Gradient overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/60 via-forest-dark/40 to-forest-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-forest-dark/10 via-forest-dark/20 to-forest-dark/60" />
       </div>
 
       {/* Content */}
@@ -74,7 +74,7 @@ export function Hero() {
         </form>
 
         {/* Trust badges */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/50 animate-fade-in stagger-4">
+        {/* <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/50 animate-fade-in stagger-4">
           <span className="flex items-center gap-2">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path
@@ -95,11 +95,77 @@ export function Hero() {
             </svg>
             14-day free trial
           </span>
+        </div> */}
+      </div>
+
+      {/* Logo Ticker Integration - Bottom Gradient Overlay */}
+      <div className="absolute bottom-0 left-0 right-0 z-20">
+        <div className="relative pt-20 pb-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+          <div className="flex animate-marquee transition-opacity">
+            {/* First set */}
+            <div className="flex shrink-0 gap-16 pr-16 items-center">
+              {[
+                { name: "FAIRE", style: "tracking-[0.3em] font-light" },
+                { name: "ActiveCampaign", style: "font-semibold", suffix: ">" },
+                { name: "WorkWhile", style: "font-medium", prefix: "W" },
+                { name: "INTERCOM", style: "font-bold tracking-wider" },
+                { name: "crypto.com", style: "font-semibold" },
+                { name: "Podium", style: "font-bold" },
+                { name: "FINOM", style: "font-bold tracking-wider" },
+                { name: "RYANAIR", style: "font-bold" },
+                { name: "amenitiz", style: "font-light tracking-wide" },
+              ].map((logo) => (
+                <div
+                  key={logo.name}
+                  className="flex items-center gap-2 text-white whitespace-nowrap"
+                >
+                  {/* @ts-ignore */}
+                  {logo.prefix && (
+                    <span className="font-bold">{logo.prefix}</span>
+                  )}
+                  <span className={`text-lg ${logo.style}`}>{logo.name}</span>
+                  {/* @ts-ignore */}
+                  {logo.suffix && (
+                    <span className="text-lg">{logo.suffix}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Second set (duplicate for scrolling) */}
+            <div className="flex shrink-0 gap-16 pr-16 items-center">
+              {[
+                { name: "FAIRE", style: "tracking-[0.3em] font-light" },
+                { name: "ActiveCampaign", style: "font-semibold", suffix: ">" },
+                { name: "WorkWhile", style: "font-medium", prefix: "W" },
+                { name: "INTERCOM", style: "font-bold tracking-wider" },
+                { name: "crypto.com", style: "font-semibold" },
+                { name: "Podium", style: "font-bold" },
+                { name: "FINOM", style: "font-bold tracking-wider" },
+                { name: "RYANAIR", style: "font-bold" },
+                { name: "amenitiz", style: "font-light tracking-wide" },
+              ].map((logo) => (
+                <div
+                  key={`${logo.name}-dup`}
+                  className="flex items-center gap-2 text-white whitespace-nowrap"
+                >
+                  {/* @ts-ignore */}
+                  {logo.prefix && (
+                    <span className="font-bold">{logo.prefix}</span>
+                  )}
+                  <span className={`text-lg ${logo.style}`}>{logo.name}</span>
+                  {/* @ts-ignore */}
+                  {logo.suffix && (
+                    <span className="text-lg">{logo.suffix}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      {/* Scroll indicator - adjusted z-index to sit above gradient if needed, or hidden if overlaps */}
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 animate-bounce bg-transparent z-30">
         <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
           <div className="w-1.5 h-3 rounded-full bg-white/50" />
         </div>

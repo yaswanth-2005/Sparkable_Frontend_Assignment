@@ -1,41 +1,97 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  BarChart3,
-  MessageSquare,
-  TrendingUp,
-  Users,
-  Zap,
-  Shield,
-} from "lucide-react";
 
 const features = [
   {
-    icon: BarChart3,
     title: "Review 100% of interactions in seconds.",
     description:
       "See the full picture of customer interactions across phone, live chat, video, and email support, at a glance.",
-    color: "from-teal to-teal-light",
+    color: "bg-pastel-yellow",
+    mockup: (
+      <div className="w-full bg-white rounded-xl shadow-sm p-4 space-y-3">
+        <div className="w-full h-4 bg-gray-100 rounded animate-pulse" />
+        <div className="w-3/4 h-4 bg-gray-100 rounded animate-pulse" />
+        <div className="flex items-center justify-between pt-2">
+          <span className="text-xs font-medium text-gray-500">
+            Auto QA score
+          </span>
+          <div className="flex items-center gap-1 bg-yellow-100 px-2 py-1 rounded-full">
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <span className="text-xs font-bold text-yellow-700">80</span>
+          </div>
+        </div>
+        <div className="space-y-2 pt-2">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-gray-300" />
+            <div className="w-full h-2 bg-gray-100 rounded" />
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-gray-300" />
+            <div className="w-full h-2 bg-gray-100 rounded" />
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
-    icon: MessageSquare,
     title: "Generate custom trainings for agents.",
     description:
       "Coach reps with AI simulations that look, act, and sound like your real customers.",
-    color: "from-golden to-golden-light",
+    color: "bg-pastel-blue",
+    mockup: (
+      <div className="w-full bg-white rounded-xl shadow-sm p-4 overflow-hidden relative">
+        <div className="text-xs font-semibold text-gray-400 mb-3">
+          Training Plan
+        </div>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+            SG
+          </div>
+          <div>
+            <div className="text-sm font-bold text-gray-900">Simon Gregory</div>
+            <div className="text-[10px] text-gray-500">
+              QA score ↗ 125 this week
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 bg-blue-50 p-2 rounded-lg">
+            <div className="w-1 h-4 bg-blue-400 rounded-full" />
+            <span className="text-xs text-gray-600 font-medium">
+              Resolving Login Issues
+            </span>
+          </div>
+          <div className="flex items-center gap-2 bg-purple-50 p-2 rounded-lg">
+            <div className="w-1 h-4 bg-purple-400 rounded-full" />
+            <span className="text-xs text-gray-600 font-medium">
+              Tech-Savvy Customers
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
-    icon: TrendingUp,
     title: "Watch customer satisfaction increase.",
     description:
       "QA and training work together to improve every conversation, whether human or AI.",
-    color: "from-mint to-cream",
+    color: "bg-pastel-green",
+    mockup: (
+      <div className="w-full bg-white rounded-xl shadow-sm p-4 flex flex-col justify-between h-full min-h-[140px]">
+        <div className="flex justify-between items-center mb-4">
+          <div className="text-xs font-semibold text-gray-400">
+            Conversation performance
+          </div>
+        </div>
+        <div className="flex items-end justify-around h-24 gap-2">
+          <div className="w-8 bg-green-500 rounded-t-lg h-[60%]" />
+          <div className="w-8 bg-teal-600 rounded-t-lg h-[40%]" />
+          <div className="w-8 bg-green-500 rounded-t-lg h-[75%]" />
+          <div className="w-8 bg-teal-600 rounded-t-lg h-[85%]" />
+          <div className="w-8 bg-green-500 rounded-t-lg h-[55%] opacity-50" />
+        </div>
+      </div>
+    ),
   },
-];
-
-const stats = [
-  { icon: Users, value: "10K+", label: "Agents trained" },
-  { icon: Zap, value: "80%", label: "Faster QA" },
-  { icon: Shield, value: "99.9%", label: "Uptime" },
 ];
 
 export function Features() {
@@ -50,7 +106,7 @@ export function Features() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -64,71 +120,48 @@ export function Features() {
     <section
       ref={sectionRef}
       id="products"
-      className="relative py-24 lg:py-32 bg-forest-dark"
+      className="relative py-24 bg-[#f9f9f9] lg:py-32" // White background as requested
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`text-center mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-black tracking-tight mb-4">
             Close the loop from customer
             <br />
-            <span className="gradient-text">insight to agent improvement</span>
+            insight to agent improvement
           </h2>
         </div>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className={`group relative p-6 lg:p-8 rounded-2xl bg-forest-light/50 border border-white/5 hover:border-white/10 transition-all duration-500 hover:-translate-y-1 ${
+              className={`group flex flex-col overflow-hidden rounded-[2rem] transition-all duration-700 ${feature.color} ${
                 isVisible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
+                  : "opacity-0 translate-y-12"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              {/* Icon */}
-              <div
-                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
-              >
-                <feature.icon className="w-6 h-6 text-forest-dark" />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-white/60 leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            </div>
-          ))}
-        </div>
-
-        {/* Stats */}
-        <div
-          className={`grid grid-cols-3 gap-4 lg:gap-8 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-xl bg-white/5 border border-white/5"
-            >
-              <div className="flex justify-center mb-3">
-                <div className="w-10 h-10 rounded-lg bg-teal/20 flex items-center justify-center">
-                  <stat.icon className="w-5 h-5 text-teal" />
+              {/* Top: Mockup Area */}
+              <div className="p-8 pb-0 flex-1 flex items-end justify-center">
+                <div className="w-full transform transition-transform group-hover:scale-105 duration-500 origin-bottom">
+                  {feature.mockup}
                 </div>
               </div>
-              <div className="text-2xl lg:text-3xl font-bold text-white mb-1">
-                {stat.value}
+
+              {/* Bottom: Text Content */}
+              <div className="p-8 pt-6">
+                <h3 className="text-2xl font-bold text-black mb-3 leading-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-base">
+                  {feature.description}
+                </p>
               </div>
-              <div className="text-sm text-white/50">{stat.label}</div>
             </div>
           ))}
         </div>

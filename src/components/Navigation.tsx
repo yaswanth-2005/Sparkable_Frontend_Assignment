@@ -3,15 +3,76 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 
-const navLinks = [
+type NavLink = {
+  label: string;
+  href: string;
+  dropdown?: {
+    columns: {
+      title: string;
+      items: {
+        label: string;
+        description?: string;
+        href: string;
+      }[];
+    }[];
+  };
+};
+
+const navLinks: NavLink[] = [
   {
     label: "Products",
-    href: "#products", // Keep hrefs for now
-    dropdown: [
-      { label: "QA Platform", href: "#qa" },
-      { label: "Training Suite", href: "#training" },
-      { label: "Analytics", href: "#analytics" },
-    ],
+    href: "#products",
+    dropdown: {
+      columns: [
+        {
+          title: "For Human Agents",
+          items: [
+            {
+              label: "QA Automation",
+              description: "Review every interaction in seconds",
+              href: "#qa-automation",
+            },
+            {
+              label: "AI Coaching & Feedback",
+              description: "Deliver personalized agent training",
+              href: "#ai-coaching",
+            },
+            {
+              label: "Training Simulations",
+              description: "Create lifelike customer simulations",
+              href: "#simulations",
+            },
+          ],
+        },
+        {
+          title: "For AI Agents",
+          items: [
+            {
+              label: "QA & Benchmarking",
+              description: "Evaluate AI quality across every interaction",
+              href: "#qa-benchmarking",
+            },
+            {
+              label: "Process Improvements",
+              description: "Continuously improve your workflows",
+              href: "#process-improvements",
+            },
+            {
+              label: "AI Scorecards",
+              description: "Grade your agent with custom scorecards",
+              href: "#ai-scorecards",
+            },
+          ],
+        },
+        {
+          title: "Platform",
+          items: [
+            { label: "Integrations", href: "#integrations" },
+            { label: "Security", href: "#security" },
+          ],
+        },
+      ],
+    },
   },
   {
     label: "Customers",
@@ -54,20 +115,39 @@ export function Navigation() {
                 )}
               </a>
 
-              {/* Dropdown */}
+              {/* Mega Dropdown */}
               {link.dropdown && activeDropdown === link.label && (
-                <div className="absolute top-full left-0 pt-6">
-                  {" "}
-                  {/* Padding for gap */}
-                  <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 w-48 overflow-hidden animate-fade-in">
-                    {link.dropdown.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="block px-4 py-2.5 text-sm text-gray-600 hover:text-black hover:bg-gray-50 transition-colors"
+                <div className="absolute top-full left-0 pt-6 -ml-4">
+                  <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 w-[900px] animate-fade-in grid grid-cols-3 gap-8">
+                    {link.dropdown.columns.map((column, colIndex) => (
+                      <div
+                        key={column.title}
+                        className={
+                          colIndex < 2 ? "border-r border-gray-100 pr-8" : ""
+                        }
                       >
-                        {item.label}
-                      </a>
+                        <h4 className="font-bold text-black mb-4">
+                          {column.title}
+                        </h4>
+                        <div className="space-y-6">
+                          {column.items.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="block group/item"
+                            >
+                              <div className="font-medium text-gray-900 group-hover/item:text-black transition-colors">
+                                {item.label}
+                              </div>
+                              {item.description && (
+                                <div className="text-sm text-gray-500 mt-1">
+                                  {item.description}
+                                </div>
+                              )}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -86,11 +166,6 @@ export function Navigation() {
                 className="w-full h-full text-black group-hover:scale-105 transition-transform"
                 fill="currentColor"
               >
-                {/* Placeholder "bird" type shape or just a simple generic logo to match Solidroad approx */}
-                <path
-                  d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"
-                  style={{ display: "none" }}
-                />
                 {/* Using the run icon concept from the previous logo but simplified black */}
                 <path d="M19 14l-4-2 4-2V7l-4 3H9l-4-3-4 5h7l-2 5 3 2 9-5v-2z" />
               </svg>
@@ -142,16 +217,28 @@ export function Navigation() {
                     {link.dropdown && <ChevronDown className="w-4 h-4" />}
                   </a>
                   {link.dropdown && (
-                    <div className="pl-4 space-y-1 mt-1 border-l-2 border-gray-100 ml-4">
-                      {link.dropdown.map((item) => (
-                        <a
-                          key={item.label}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-600 hover:text-black transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {item.label}
-                        </a>
+                    <div className="pl-4 space-y-4 mt-2 border-l-2 border-gray-100 ml-4 py-2">
+                      {link.dropdown.columns.map((column) => (
+                        <div key={column.title} className="space-y-2">
+                          <div className="text-xs font-bold text-gray-400 uppercase tracking-wider px-4">
+                            {column.title}
+                          </div>
+                          {column.items.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="block px-4 py-2 text-sm text-gray-600 hover:text-black transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              <div className="font-medium">{item.label}</div>
+                              {item.description && (
+                                <div className="text-xs text-gray-400">
+                                  {item.description}
+                                </div>
+                              )}
+                            </a>
+                          ))}
+                        </div>
                       ))}
                     </div>
                   )}
