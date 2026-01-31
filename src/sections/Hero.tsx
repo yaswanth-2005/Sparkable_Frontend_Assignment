@@ -60,13 +60,13 @@ export function Hero() {
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/40 rounded-full focus:border-golden focus:ring-golden/20"
+              className="w-full pl-12 pr-4 py-4 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/40 rounded-lg focus:border-golden focus:ring-golden/20"
               required
             />
           </div>
           <Button
             type="submit"
-            className="bg-golden hover:bg-golden-light text-forest-dark font-semibold px-6 py-4 rounded-full transition-all hover:shadow-glow-lg flex items-center justify-center gap-2 group"
+            className="bg-golden hover:bg-golden-light text-forest-dark font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-glow-lg flex items-center justify-center gap-2 group"
           >
             See a demo
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
