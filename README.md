@@ -1,6 +1,6 @@
-# SaaS Landing Page Clone
+# Sparkable Frontend Assignment
 
-![Project Banner](./public/hero-bg.jpg)
+![Project Banner](./public/HeroSection.png)
 
 This project is a modern, responsive SaaS landing page clone built with a robust technology stack. It features a sleek design with interactive components, smooth animations, and a fully functional layout.
 
