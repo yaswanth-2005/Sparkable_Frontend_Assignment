@@ -42,7 +42,6 @@ Ensure you have the following installed:
 
     ```bash
     git clone <repository-url>
-    cd app
     ```
 
 2.  **Install dependencies:**
