@@ -70,9 +70,17 @@ Open your browser and navigate to `http://localhost:5173` (or the port shown in 
 
 ![Features Section](./public/FeaturesSection.png)
 
+### Grid View
+
+![Grid View](./public/GridView.png)
+
+### People
+
+![People](./public/People.png)
+
 ### Additional Views
 
-![Other Views](./public/AdditionalSection.png)
+![Other Views](./public/AddtionalSection.png)
 
 ## 📂 Project Structure
 
